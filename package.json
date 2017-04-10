@@ -1,0 +1,11 @@
+{
+  "name": "denon-connect",
+  "version": "1.0.0",
+  "description": "connect to Denon receiver",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jonas Lilja",
+  "license": "ISC"
+}
