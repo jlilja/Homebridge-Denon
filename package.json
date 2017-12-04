@@ -4,12 +4,16 @@
   "description": "connect to Denon receiver",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
   },
   "author": "Jonas Lilja",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.81.0",
+    "axios": "^0.17.1",
     "xml2json": "^0.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.4"
   }
 }
