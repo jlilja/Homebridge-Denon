@@ -1,4 +1,4 @@
-var request = require('request');
+var axios = require('axios');
 var parser = require('xml2json');
 
 class Endpoints {
@@ -9,8 +9,32 @@ class Endpoints {
 	 * @return void
 	 */
 	constructor() {
-		this.ip = '000.000.0.000';
+		this.ip = '192.168.1.4';
 		this.endpoint = '/goform/formMainZone_MainZoneXml.xml';
+	}
+
+	/**
+	 * @author Jonas Lilja
+	 * @return object
+	 */
+	async getMeta() {
+	    const result = await axios.get('http://' + this.ip + this.endpoint)
+	    	.then((response) => {
+		    	if (response.status === 200) {
+	    			return JSON.parse(parser.toJson(response.data))
+	    		}
+	    	})
+	    return result
+	}
+
+	async getPowerState() {
+		const data = await this.getMeta();
+		return data.item.Power.value
+	}
+
+	async getVolume() {
+		const data = await this.getMeta();
+		return data.item.MasterVolume.value
 	}
 
 	/**
@@ -20,39 +44,19 @@ class Endpoints {
 	 * Otherwise you will get a massive shock and you will probably die.
 	 * 
 	 * @author Jonas Lilja
-	 * 
-	 * @param Number
+	 * @param { integer } [volume] volume points
+	 * @return { object } [http] client response
 	 */
 	setVolume(volume) {
-		request.get('http://' + this.ip + '/goform/formiPhoneAppVolume.xml?1+' + (volume - 80), function (error, response) {
-			if (response.statusCode === 200) {
-				console.log('Volume is set to ' + volume);
-			}
-		})
+		axios.get('http://' + this.ip + '/goform/formiPhoneAppVolume.xml?1+' + (volume - 80))
+			.then((response) => {
+				if (response.status === 200) {
+					return response
+				}
+			})
 	}
-
-	/**
-	 * @author Jonas Lilja
-	 * 
-	 * @return object
-	 */
-	getMeta() {
-	    request.get('http://' + this.ip + this.endpoint, function (error, response, body) {
-	    	if (response.statusCode === 200) {
-    			return parser.toJson(body);
-    		}
-	    })
-	}
-
-	getPowerState() {
-		// 1. Manage to get data from getMeta method.
-		// 2. convert it to Json
-		// 3. Filter out specific data
-		// 4. Return data.
-	}
-
 }
 
-var endPoint = new Endpoints();
+const api = new Endpoints();
 
-endPoint.methodName();
+api.getVolume();
