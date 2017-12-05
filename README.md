@@ -2,14 +2,14 @@
 
 ## What does it do
 
-☑️ Set the volume of the receiver.
+☑️ Set volume.
 
-☑️ Get the volume of the receiver.
+☑️ Get volume.
 
-☑️ Get meta data of current state.
+☑️ Get metadata.
 
-  Get current state
+☑️ Set power state
 
-  Set current inputs
+  Get power state - WIP
   
   Ability to set volume by Siri's slider.
