@@ -2,14 +2,14 @@
 
 ## What does it do
 
-☑️ Get metadata.
+✅ Get metadata.
 
 Get power state - WIP
 
-☑️ Set power state
+✅ Set power state
 
-☑️ Get volume.
+✅ Get volume.
 
-☑️ Set volume.
-  
+✅ Set volume.
+
 Ability to set volume by Siri's slider.
