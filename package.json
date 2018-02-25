@@ -1,8 +1,11 @@
 {
-  "name": "denon-connect",
+  "name": "homebridge-denon-connect",
   "version": "1.0.0",
   "description": "connect to Denon receiver",
-  "main": "app.js",
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js"
@@ -15,5 +18,9 @@
   },
   "devDependencies": {
     "nodemon": "^1.12.4"
+  },
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
   }
 }
